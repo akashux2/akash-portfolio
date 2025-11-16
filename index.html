@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKASH'S PORTFOLIO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700&family=Host+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            color: #FFFFFF;
+            font-family: 'Host Grotesk', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            font-size: 17px;
+            line-height: 1.5;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 32px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 122, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-name {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #007AFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-role {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 28px;
+            color: #007AFF;
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-tagline {
+            font-size: 20px;
+            color: #8E8E93;
+            max-width: 700px;
+            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #007AFF;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 15px;
+            color: #8E8E93;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn {
+            font-family: 'Epilogue', sans-serif;
+            display: inline-block;
+            padding: 16px 48px;
+            background: #007AFF;
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 19px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 24px rgba(0, 122, 255, 0.4);
+        }
+
+        .cta-btn:hover {
+            background: #0051D5;
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            color: #FFFFFF;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: #8E8E93;
+            margin-bottom: 64px;
+            max-width: 600px;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            font-size: 20px;
+            line-height: 1.7;
+            color: #C7C7CC;
+        }
+
+        .about-content p {
+            margin-bottom: 24px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-card:hover {
+            border-color: rgba(0, 122, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .skill-card h3 {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #007AFF;
+            letter-spacing: -0.5px;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            font-size: 17px;
+            color: #C7C7CC;
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .skill-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #007AFF;
+            font-weight: 600;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            gap: 24px;
+            max-width: 900px;
+        }
+
+        .education-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            border-color: rgba(0, 122, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.2);
+        }
+
+        .education-degree {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #FFFFFF;
+        }
+
+        .education-institution {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 19px;
+            color: #007AFF;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .education-duration {
+            font-size: 17px;
+            color: #8E8E93;
+            margin-bottom: 16px;
+        }
+
+        .education-details {
+            font-size: 17px;
+            color: #C7C7CC;
+            line-height: 1.6;
+        }
+
+        /* Internships Section */
+        .internship-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .internship-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .internship-item:hover {
+            border-color: rgba(0, 122, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.2);
+        }
+
+        .internship-title {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #FFFFFF;
+        }
+
+        .internship-company {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 19px;
+            color: #007AFF;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .internship-duration {
+            font-size: 17px;
+            color: #8E8E93;
+            margin-bottom: 16px;
+        }
+
+        .internship-desc {
+            font-size: 17px;
+            color: #C7C7CC;
+            line-height: 1.6;
+        }
+
+        .internship-desc ul {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+
+        .internship-desc li {
+            margin-bottom: 8px;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            border-color: rgba(0, 122, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .cert-title {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #FFFFFF;
+            line-height: 1.4;
+        }
+
+        .cert-meta {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 17px;
+            color: #007AFF;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .cert-desc {
+            font-size: 15px;
+            color: #8E8E93;
+            line-height: 1.5;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #007AFF, #5856D6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: rgba(0, 122, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-title {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #FFFFFF;
+            letter-spacing: -0.5px;
+        }
+
+        .project-subtitle {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 17px;
+            color: #007AFF;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            font-size: 17px;
+            color: #C7C7CC;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .tech-tag {
+            font-size: 15px;
+            padding: 8px 16px;
+            background: rgba(0, 122, 255, 0.15);
+            border: 1px solid rgba(0, 122, 255, 0.3);
+            border-radius: 8px;
+            color: #007AFF;
+            font-weight: 600;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+
+        .contact-item:hover {
+            border-color: rgba(0, 122, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            font-size: 32px;
+        }
+
+        .contact-label {
+            font-size: 15px;
+            color: #8E8E93;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 17px;
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            padding: 64px 0;
+            text-align: center;
+            font-size: 15px;
+            color: #8E8E93;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: 42px;
+            }
+
+            .hero-role {
+                font-size: 22px;
+            }
+
+            .hero-tagline {
+                font-size: 17px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .hero-stats {
+                gap: 32px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .section-title {
+                font-size: 36px;
+                margin-bottom: 12px;
+            }
+
+            .section-subtitle {
+                font-size: 17px;
+                margin-bottom: 48px;
+            }
+
+            .skills-grid,
+            .project-grid,
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-name">Akash B</h1>
+        <p class="hero-role">DATA SCIENCE STUDENT & AGENTIC AI DEVELOPER</p>
+        <p class="hero-tagline">// focusing on simple UX and practical AI solutions.</p>
+        
+
+        
+        <a href="#contact" class="cta-btn">Get in Touch</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Building the future of AI, one solution at a time</p>
+            <div class="about-content">
+                <p>Solution-driven and tech-obsessed, I specialize in UX design, LLM development, and agentic AI—turning complex ideas into impactful digital experiences.</p>
+                <p>Currently pursuing B.Tech in AI & Data Science at MNM Jain Engineering College (2022–2026) while building scalable DevOps workflows and automation for real-world business needs.
+A startup enthusiast and lifelong learner, I thrive on designing and deploying AI products with open tools and watching the future of technology unfold.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-subtitle">Expertise across the AI & development stack</p>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>AI/ML & Generative AI</h3>
+                    <ul>
+                        <li>Python & Machine Learning</li>
+                        <li>Large Language Models (LLMs)</li>
+                        <li>Generative AI Applications</li>
+                        <li>RAG Systems Implementation</li>
+                        <li>Agentic AI Solutions</li>
+                        <li>Prompt Engineering</li>
+                        <li>Knowledge Graphs</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Web Development</h3>
+                    <ul>
+                        <li>React.js Frontend Development</li>
+                        <li>Spring Boot Backend</li>
+                        <li>Flask API Development</li>
+                        <li>Node.js Applications</li>
+                        <li>JavaScript ES6+</li>
+                        <li>RESTful API Design</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools & Platforms</h3>
+                    <ul>
+                        <li>GitHub & Version Control</li>
+                        <li>VS Code Development</li>
+                        <li>Figma & UI Design</li>
+                        <li>MySQL Database</li>
+                        <li>Google Colab</li>
+                        <li>Cloud Deployment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">Academic foundation & continuous learning</p>
+            <div class="education-grid">
+                <div class="education-item">
+                    <div class="education-degree">B.Tech in Artificial Intelligence & Data Science</div>
+                    <div class="education-institution">MNM Jain Engineering College, Chennai</div>
+                    <div class="education-duration">2023 – 2026 (Expected)</div>
+                    <div class="education-details">
+                        <strong>CGPA:</strong> 7.5/10<br>
+                        <strong>Core Subjects:</strong> Machine Learning, Deep Learning, Data Analytics, Algorithms, Database Management, Cloud Technologies
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-degree">Diploma in Robotics Engineering</div>
+                    <div class="education-institution">Swamy Abedhanandha Polytechnic College, Thellar</div>
+                    <div class="education-duration">2020 – 2023</div>
+                    <div class="education-details">
+                        <strong>Percentage:</strong> 80%<br>
+                        <strong>Focus:</strong> Embedded Systems, Automation, IoT Integration
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-degree">Supplementary Learning</div>
+                    <div class="education-institution">Online Learning Platforms</div>
+                    <div class="education-duration">Ongoing</div>
+                    <div class="education-details">
+                        Continuous participant in Google-Kaggle Agentic AI Intensive Program, Coursera Generative AI Applications, IBM SkillsBuild, University of Michigan - Python for Everybody. Active learning on Kaggle, GitHub, Discord AI communities.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internships Section -->
+    <section id="internships">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">Real-world impact through internships</p>
+            <div class="internship-grid">
+                <div class="internship-item">
+                    <div class="internship-title">UI/UX Design Intern</div>
+                    <div class="internship-company">CODSOFT</div>
+                    <div class="internship-duration">AUG 2024</div>
+                    <div class="internship-desc">
+                        <ul>
+                            <li>Designed intuitive, accessible interfaces using Figma and Adobe XD</li>
+                            <li>Collaborated with development teams for consistent cross-platform design</li>
+                            <li>Conducted user research and testing to improve user experience</li>
+                            <li>Created design systems and component libraries for scalable development</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="internship-item">
+                    <div class="internship-title">Engineering Intern</div>
+                    <div class="internship-company">MARTS Electricals Pvt Ltd, Bangalore</div>
+                    <div class="internship-duration">JUL 2022</div>
+                    <div class="internship-desc">
+                        <ul>
+                            <li>Supported industrial automation and IoT engineering teams</li>
+                            <li>Gained exposure to real-world problem solving in operations</li>
+                            <li>Worked on automation systems and embedded solutions</li>
+                            <li>Collaborated with cross-functional teams on project delivery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <p class="section-subtitle">Industry-recognized credentials</p>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <div class="cert-title">IBM RAG & Agentic AI Course</div>
+                    <div class="cert-meta">IBM | December 2025</div>
+                    <div class="cert-desc">Advanced retrieval-augmented generation and agentic AI workflows</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-title">Spring 5 Basics</div>
+                    <div class="cert-meta">Industry Certification | October 2025</div>
+                    <div class="cert-desc">Spring Framework fundamentals and application development</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-title">Generative AI on LLMs</div>
+                    <div class="cert-meta">DeepLearning.AI | July 2025</div>
+                    <div class="cert-desc">LLM fundamentals, fine-tuning, and deployment strategies</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-title">Google UX Professional Certification</div>
+                    <div class="cert-meta">Google | August 2024</div>
+                    <div class="cert-desc">Comprehensive UX design principles and methodologies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">AI-powered solutions that make an impact</p>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-title">Knowledge Graph Generator</div>
+                    <div class="project-subtitle">Intelligent Data Structuring System</div>
+                    <div class="project-desc">Intelligent system for generating and managing knowledge graphs from unstructured data using generative AI and LLMs. Enables semantic search and relationship mapping.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">Knowledge Graphs</span>
+                        <span class="tech-tag">Vector DBs</span>
+                        <span class="tech-tag">Prompt Engineering</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">Smart Health Monitoring App</div>
+                    <div class="project-subtitle">End-to-End Health Analytics</div>
+                    <div class="project-desc">Comprehensive health monitoring application with ML-based anomaly detection and predictive analytics. Features real-time data visualization and personalized insights.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Data Analytics</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">RAG Chatbot System</div>
+                    <div class="project-subtitle">Retrieval-Augmented Generation</div>
+                    <div class="project-desc">Advanced RAG implementation with FAISS/Chroma for document retrieval, intelligent chunking strategies, and seamless LLM integration for accurate responses.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">Embeddings</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">Agentic AI Workflow</div>
+                    <div class="project-subtitle">Multi-Agent System</div>
+                    <div class="project-desc">Built autonomous agentic AI system with multi-step reasoning, tool integration, and automated decision-making capabilities for complex business workflows.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Agentic AI</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Let's build something amazing together</p>
+            <div class="contact-grid">
+                <a href="mailto:akashbalaji61@gmail.com" class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">akashbalaji61@gmail.com</div>
+                    </div>
+                </a>
+                <a href="tel:+919344979255" class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">+91 9344979255</div>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/akash-b-a51483311" target="_blank" class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div>
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value">/akash-b-a51483311</div>
+                    </div>
+                </a>
+                <a href="https://github.com/akashux2" target="_blank" class="contact-item">
+                    <div class="contact-icon">💻</div>
+                    <div>
+                        <div class="contact-label">GitHub</div>
+                        <div class="contact-value">/akashux2</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Akash B. Designed with passion for AI innovation.</p>
+        </div>
+    </footer>
+</body>
+</html>
